@@ -2,21 +2,23 @@ import pygame
 
 pygame.init()
 screen = pygame.display.set_mode((400, 300))
-done = False
-is_blue = True
+pygame.display.set_caption('First Game')
 
+x = 50
+y = 50
+width = 40
+height = 60
+velocity = 5
 
-while not done:
+run = True
+while run:
+    pygame.time.delay(100)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            done = True
+            run = False
+    pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
+    pygame.display.update()
 
-    pygame.display.flip()
-    if is_blue:
-        color = (0, 128, 255)
-    else:
-        color = (255, 100, 0)
-    pygame.draw.rect(screen, color, pygame.Rect(30, 30, 60, 60))
+pygame.quit()
 
-    if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-        is_blue = not is_blue
+
